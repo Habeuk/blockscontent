@@ -1,0 +1,23 @@
+blockscontent.settings_form:
+  title: 'blockscontent'
+  description: 'Configure blockscontent.'
+  parent: system.admin_config_system
+  route_name: blockscontent.settings_form
+  weight: 10
+
+# Blocks contents menu items definition
+entity.blocks_contents.collection:
+  title: 'Blocks contents list'
+  route_name: entity.blocks_contents.collection
+  description: 'List Blocks contents entities'
+  parent: system.admin_structure
+  weight: 100
+
+
+# Blocks contents type menu items definition
+entity.blocks_contents_type.collection:
+  title: 'Blocks contents type'
+  route_name: entity.blocks_contents_type.collection
+  description: 'List Blocks contents type (bundles)'
+  parent: system.admin_structure
+  weight: 99

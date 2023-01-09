@@ -1,0 +1,10 @@
+entity.blocks_contents.add_form:
+  route_name: entity.blocks_contents.add_page
+  title: 'Add Blocks contents'
+  appears_on:
+    - entity.blocks_contents.collection
+entity.blocks_contents_type.add_form:
+  route_name: entity.blocks_contents_type.add_form
+  title: 'Add Blocks contents type'
+  appears_on:
+    - entity.blocks_contents_type.collection

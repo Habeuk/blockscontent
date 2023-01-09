@@ -1,0 +1,27 @@
+# Blocks contents routing definition
+entity.blocks_contents_type.edit_form:
+  route_name: entity.blocks_contents_type.edit_form
+  base_route: entity.blocks_contents_type.edit_form
+  title: 'Edit'
+  weight: 0
+
+entity.blocks_contents.canonical:
+  route_name: entity.blocks_contents.canonical
+  base_route: entity.blocks_contents.canonical
+  title: 'View'
+
+entity.blocks_contents.edit_form:
+  route_name: entity.blocks_contents.edit_form
+  base_route: entity.blocks_contents.canonical
+  title: 'Edit'
+
+entity.blocks_contents.version_history:
+  route_name: entity.blocks_contents.version_history
+  base_route: entity.blocks_contents.canonical
+  title: 'Revisions'
+
+entity.blocks_contents.delete_form:
+  route_name:  entity.blocks_contents.delete_form
+  base_route:  entity.blocks_contents.canonical
+  title: Delete
+  weight: 10

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for blockscontent module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function blockscontent_theme() {
+  $theme = [];
+  $theme['blocks_contents'] = [
+    'render element' => 'elements',
+    'file' => 'blocks_contents.page.inc',
+    'template' => 'blocks_contents',
+  ];
+  $theme['blocks_contents_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'blocks_contents.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function blockscontent_theme_suggestions_blocks_contents(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#blocks_contents'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'blocks_contents__' . $sanitized_view_mode;
+  $suggestions[] = 'blocks_contents__' . $entity->bundle();
+  $suggestions[] = 'blocks_contents__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'blocks_contents__' . $entity->id();
+  $suggestions[] = 'blocks_contents__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}

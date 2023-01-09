@@ -1,0 +1,14 @@
+{
+    "name": "stephane/blockscontent",
+    "description": "alternative au module block_content car ce dernier cree les boucles de latence",
+    "type": "drupal-custom-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kouwa stephane",
+            "email": "kksasteph888@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

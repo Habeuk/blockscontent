@@ -1,0 +1,37 @@
+administer blockscontent configuration:
+  title: 'Administer blockscontent configuration'
+  description: 'Optional description.'
+  restrict access: true
+add blocks contents entities:
+  title: 'Create new Blocks contents entities'
+
+administer blocks contents entities:
+  title: 'Administer Blocks contents entities'
+  description: 'Allow to access the administration form to configure Blocks contents entities.'
+  restrict access: true
+
+delete blocks contents entities:
+  title: 'Delete Blocks contents entities'
+
+edit blocks contents entities:
+  title: 'Edit Blocks contents entities'
+
+view published blocks contents entities:
+  title: 'View published Blocks contents entities'
+
+view unpublished blocks contents entities:
+  title: 'View unpublished Blocks contents entities'
+
+view all blocks contents revisions:
+  title: 'View all Blocks contents revisions'
+
+revert all blocks contents revisions:
+  title: 'Revert all Blocks contents revisions'
+  description: 'Role requires permission <em>view Blocks contents revisions</em> and <em>edit rights</em> for blocks contents entities in question or <em>administer blocks contents entities</em>.'
+
+delete all blocks contents revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Blocks contents revisions</em> and <em>delete rights</em> for blocks contents entities in question or <em>administer blocks contents entities</em>.'
+
+permission_callbacks:
+  - \Drupal\blockscontent\BlocksContentsPermissions::generatePermissions

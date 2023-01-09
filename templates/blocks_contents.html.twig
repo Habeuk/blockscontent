@@ -1,0 +1,22 @@
+{#
+/**
+ * @file blocks_contents.html.twig
+ * Default theme implementation to present Blocks contents data.
+ *
+ * This template is used when viewing Blocks contents pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_blocks_contents()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('blocks_contents') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>
