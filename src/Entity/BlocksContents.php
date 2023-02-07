@@ -65,9 +65,9 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  *   links = {
  *     "canonical" = "/admin/structure/blocks_contents/{blocks_contents}",
  *     "add-page" = "/admin/structure/blocks_contents/add",
- *     "add-form" = "/admin/structure/blocks_contents/add/{blocks_contents_type}",
- *     "edit-form" = "/admin/structure/blocks_contents/{blocks_contents}/edit",
- *     "delete-form" = "/admin/structure/blocks_contents/{blocks_contents}/delete",
+ *     "add-form" = "/blocks_contents/add/{blocks_contents_type}",
+ *     "edit-form" = "/blocks_contents/{blocks_contents}/edit",
+ *     "delete-form" = "/blocks_contents/{blocks_contents}/delete",
  *     "version-history" = "/admin/structure/blocks_contents/{blocks_contents}/revisions",
  *     "revision" = "/admin/structure/blocks_contents/{blocks_contents}/revisions/{blocks_contents_revision}/view",
  *     "revision_revert" = "/admin/structure/blocks_contents/{blocks_contents}/revisions/{blocks_contents_revision}/revert",
