@@ -237,7 +237,7 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
     ])->setDisplayOptions('form', [
       'type' => 'string_textfield',
       'weight' => -4
-    ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setRequired(TRUE);
+    ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setRequired(TRUE)->setTranslatable(true);
     
     $fields['status']->setDescription(t('A boolean indicating whether the Blocks contents is published.'))->setDisplayOptions('form', [
       'type' => 'boolean_checkbox',
