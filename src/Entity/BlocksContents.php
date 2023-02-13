@@ -26,8 +26,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\blockscontent\BlocksContentsListBuilder",
  *     "views_data" = "Drupal\blockscontent\Entity\BlocksContentsViewsData",
- *     "translation" = "Drupal\blockscontent\BlocksContentsTranslationHandler",
- *
+ *     "translation" = "Drupal\blockscontent\BlocksContentsTranslationHandler", *
  *     "form" = {
  *       "default" = "Drupal\blockscontent\Form\BlocksContentsForm",
  *       "add" = "Drupal\blockscontent\Form\BlocksContentsForm",
