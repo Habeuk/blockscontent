@@ -46,11 +46,11 @@ class BlocksContentsTypeForm extends EntityForm {
         '#group' => 'additional_settings'
       ];
       
-      $language_configuration = ContentLanguageSettings::loadByEntityTypeBundle('site_internet_entity', $blocks_contents_type->id());
+      $language_configuration = ContentLanguageSettings::loadByEntityTypeBundle('blocks_contents', $blocks_contents_type->id());
       $form['language']['language_configuration'] = [
         '#type' => 'language_configuration',
         '#entity_information' => [
-          'entity_type' => 'site_internet_entity',
+          'entity_type' => 'blocks_contents',
           'bundle' => $blocks_contents_type->id()
         ],
         '#default_value' => $language_configuration
