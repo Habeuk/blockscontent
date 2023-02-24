@@ -3,3 +3,5 @@ type: module
 description: creer afin de se passer du module block_content qui semble bugger
 package: Custom
 core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:domain
