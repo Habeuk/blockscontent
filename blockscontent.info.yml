@@ -5,3 +5,5 @@ package: Custom
 core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:domain
+  - drupal:domain_source
+  - drupal:domain_access
