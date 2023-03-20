@@ -37,6 +37,13 @@ class BlocksContentsTypeForm extends EntityForm {
       '#disabled' => !$blocks_contents_type->isNew()
     ];
     
+    $form['description'] = [
+      '#title' => $this->t('Description'),
+      '#type' => 'textarea',
+      '#default_value' => $blocks_contents_type->getDescription(),
+      '#description' => $this->t('This description is important because it allows you to reuse existing types if the fields match')
+    ];
+    
     /* You will need additional form elements for your custom properties. */
     
     if ($this->moduleHandler->moduleExists('language')) {

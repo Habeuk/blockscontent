@@ -24,7 +24,8 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   },
  *   config_export = {
  *     "id",
- *     "label"
+ *     "label",
+ *     "description"
  *   },
  *   config_prefix = "blocks_contents_type",
  *   admin_permission = "administer site configuration",
@@ -44,19 +45,34 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  * )
  */
 class BlocksContentsType extends ConfigEntityBundleBase implements BlocksContentsTypeInterface {
-
+  
   /**
    * The Blocks contents type ID.
    *
    * @var string
    */
   protected $id;
-
+  
   /**
    * The Blocks contents type label.
    *
    * @var string
    */
   protected $label;
-
+  
+  /**
+   * The Blocks contents type description.
+   *
+   * @var string
+   */
+  public $description;
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function getDescription() {
+    return $this->description;
+  }
+  
 }
