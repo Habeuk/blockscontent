@@ -45,29 +45,5 @@ function blockscontent_theme_suggestions_blocks_contents(array $variables) {
   return $suggestions;
 }
 
-/**
- *
- * @param EntityTypeInterface $entity_type
- * @return \Drupal\Core\Field\BaseFieldDefinition[]
- */
-function blockscontent_entity_base_field_info(EntityTypeInterface $entity_type) {
-  $fields = [];
-  if ($entity_type->id() == 'blocks_contents') {
-    $field_access = \Drupal\domain_access\DomainAccessManagerInterface::DOMAIN_ACCESS_FIELD;
-    $field_source = \Drupal\domain_source\DomainSourceElementManagerInterface::DOMAIN_SOURCE_FIELD;
-    //
-    $fields[$field_access] = BaseFieldDefinition::create('entity_reference')->setLabel(t(" Domain access "))->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)->setTranslatable(false)->setDisplayOptions('form', [
-      'type' => 'select2_entity_reference',
-      'weight' => 40,
-      'settings' => [
-        'autocomplete' => true
-      ]
-    ])->setSetting('handler', 'default')->setSetting('target_type', 'domain')->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setDefaultValueCallback('\Drupal\creation_site_virtuel\CreationSiteVirtuel::getActiveDomain');
-    //
-    $fields[$field_source] = BaseFieldDefinition::create('entity_reference')->setLabel(t(" Domain source "))->setDisplayOptions('form', [
-      'type' => 'options_select',
-      'weight' => 40
-    ])->setSetting('handler', 'default')->setSetting('target_type', 'domain')->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setTranslatable(false);
-  }
-  return $fields;
-}
+
+
