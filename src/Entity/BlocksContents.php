@@ -228,7 +228,7 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
     ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE);
     
     $fields['name'] = BaseFieldDefinition::create('string')->setLabel(t('Name'))->setDescription(t('The name of the Blocks contents entity.'))->setRevisionable(TRUE)->setSettings([
-      'max_length' => 50,
+      'max_length' => 250,
       'text_processing' => 0
     ])->setDefaultValue('')->setDisplayOptions('view', [
       'label' => 'above',
