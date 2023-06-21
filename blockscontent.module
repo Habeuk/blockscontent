@@ -8,6 +8,76 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  * @file
  * Primary module hooks for blockscontent module.
  */
+function __blockscontent_update_name_max_length($entity_type_id) {
+  /**
+   *
+   * @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage $entityStorage
+   */
+  $entityStorage = \Drupal::entityTypeManager()->getStorage($entity_type_id);
+  
+  // Retrieve existing field data.
+  $database = \Drupal::database();
+  $table = $entity_type_id . '_field_data';
+  $names = $database->select($table, 'et')->fields('et', [
+    'id',
+    'langcode',
+    'name'
+  ])->execute()->fetchAll(\PDO::FETCH_ASSOC);
+  // Remove data from the column.
+  $database->update($table)->fields([
+    'name' => NULL
+  ])->execute();
+  //
+  // si les revisions sont activées.
+  if ($entityStorage->getRevisionTable()) {
+    $table_revision = $entity_type_id . "_field_revision";
+    $names_revision = $database->select($table_revision, 'et')->fields('et', [
+      'id',
+      'langcode',
+      'name'
+    ])->execute()->fetchAll(\PDO::FETCH_ASSOC);
+    $database->update($table_revision)->fields([
+      'name' => NULL
+    ])->execute();
+  }
+  
+  // Remove old definition field.
+  $updateManager = \Drupal::entityDefinitionUpdateManager();
+  $storagedef = $updateManager->getFieldStorageDefinition('name', $entity_type_id);
+  $updateManager->uninstallFieldStorageDefinition($storagedef);
+  // Load new definition field in code.
+  /**
+   *
+   * @var \Drupal\Core\Entity\EntityFieldManager $fieldManager
+   */
+  $fieldManager = \Drupal::service('entity_field.manager');
+  $fields = $fieldManager->getFieldStorageDefinitions($entity_type_id);
+  $updateManager->installFieldStorageDefinition('name', $entity_type_id, "gestion_tache", $fields['name']);
+  // Restore entity data in the new schema.
+  foreach ($names as $name) {
+    $database->update($table)->fields([
+      'name' => $name['name']
+    ])->condition('id', $name['id'])->condition('langcode', $name['langcode'])->execute();
+  }
+  // restore revision
+  if ($entityStorage->getRevisionTable())
+    foreach ($names_revision as $name) {
+      $database->update($table_revision)->fields([
+        'name' => $name['name']
+      ])->condition('id', $name['id'])->condition('langcode', $name['langcode'])->execute();
+    }
+}
+
+/**
+ * Update value max_length from 50 to 250.
+ *
+ * implement hook_update_8001
+ *
+ * @see https://www.drupal.org/node/2554097
+ */
+function blockscontent_update_8001() {
+  __blockscontent_update_name_max_length('blocks_contents');
+}
 
 /**
  * Implements hook_theme().
