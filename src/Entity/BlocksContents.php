@@ -62,7 +62,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/blocks_contents/{blocks_contents}",
+ *     "canonical" = "/blocks-contents/{blocks_contents}",
  *     "add-page" = "/admin/structure/blocks_contents/add",
  *     "add-form" = "/blocks_contents/add/{blocks_contents_type}",
  *     "edit-form" = "/blocks_contents/{blocks_contents}/edit",
