@@ -10,7 +10,7 @@ entity.blocks_contents.collection:
   title: 'Blocks contents list'
   route_name: entity.blocks_contents.collection
   description: 'List Blocks contents entities'
-  parent: system.admin_structure
+  parent: system.admin_content
   weight: 100
 
 
