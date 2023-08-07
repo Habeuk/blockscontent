@@ -1,5 +1,5 @@
 {
-    "name": "stephane888/blockscontent",
+    "name": "habeuk/blockscontent",
     "description": "alternative au module block_content car ce dernier cree les boucles de latence",
     "type": "drupal-custom-module",
     "license": "MIT",
