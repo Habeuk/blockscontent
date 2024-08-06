@@ -37,11 +37,6 @@ class BlocksContentsForm extends ContentEntityForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     /* @var \Drupal\blockscontent\Entity\BlocksContents $entity */
-    // dump($this->entity->bundle());
-    // dump($this->entity->toArray());
-    // $paragraph =
-    // $this->entityTypeManager->getStorage('paragraph')->load('17689');
-    // dump($paragraph->toArray());
     $form = parent::buildForm($form, $form_state);
     
     return $form;
@@ -72,5 +67,4 @@ class BlocksContentsForm extends ContentEntityForm {
       'blocks_contents' => $entity->id()
     ]);
   }
-  
 }

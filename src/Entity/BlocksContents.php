@@ -62,7 +62,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "canonical" = "/blocks-contents/{blocks_contents}",
+ *     "canonical" = "/blocks_contents/{blocks_contents}",
  *     "add-page" = "/admin/structure/blocks_contents/add",
  *     "add-form" = "/blocks_contents/add/{blocks_contents_type}",
  *     "edit-form" = "/blocks_contents/{blocks_contents}/edit",
@@ -212,25 +212,28 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
     // Add the published field.
     $fields += static::publishedBaseFieldDefinitions($entity_type);
     
-    $fields['user_id'] = BaseFieldDefinition::create('entity_reference')->setLabel(t('Authored by'))->setDescription(t('The user ID of author of the Blocks contents entity.'))->setRevisionable(TRUE)->setSetting('target_type', 'user')->setSetting('handler', 'default')->setTranslatable(TRUE)->setDisplayOptions('view', [
+    $fields['user_id'] = BaseFieldDefinition::create('entity_reference')->setLabel(t('Authored by'))->setDescription(t('The user ID of author of the Blocks contents entity.'))->setRevisionable(TRUE)->setSetting(
+      'target_type', 'user')->setSetting('handler', 'default')->setTranslatable(TRUE)->setDisplayOptions('view', [
       'label' => 'hidden',
       'type' => 'author',
       'weight' => 0
-    ])->setDisplayOptions('form', [
-      'type' => 'entity_reference_autocomplete',
-      'weight' => 5,
-      'settings' => [
-        'match_operator' => 'CONTAINS',
-        'size' => '60',
-        'autocomplete_type' => 'tags',
-        'placeholder' => ''
-      ]
-    ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE);
+    ])->setDisplayOptions('form',
+      [
+        'type' => 'entity_reference_autocomplete',
+        'weight' => 5,
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => '60',
+          'autocomplete_type' => 'tags',
+          'placeholder' => ''
+        ]
+      ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE);
     
-    $fields['name'] = BaseFieldDefinition::create('string')->setLabel(t('Name'))->setDescription(t('The name of the Blocks contents entity.'))->setRevisionable(TRUE)->setSettings([
-      'max_length' => 250,
-      'text_processing' => 0
-    ])->setDefaultValue('')->setDisplayOptions('view', [
+    $fields['name'] = BaseFieldDefinition::create('string')->setLabel(t('Name'))->setDescription(t('The name of the Blocks contents entity.'))->setRevisionable(TRUE)->setSettings(
+      [
+        'max_length' => 250,
+        'text_processing' => 0
+      ])->setDefaultValue('')->setDisplayOptions('view', [
       'label' => 'above',
       'type' => 'string',
       'weight' => -4
@@ -248,19 +251,16 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
     
     $fields['changed'] = BaseFieldDefinition::create('changed')->setLabel(t('Changed'))->setDescription(t('The time that the entity was last edited.'));
     
-    $fields['layout_paragraphs'] = BaseFieldDefinition::create('entity_reference')->setLabel(t(' Sections (@deprecated use "Sections entities revision)"  '))->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)->setDisplayOptions('form', [
-      'type' => 'inline_entity_form_complex',
-      'weight' => 0
-    ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setSetting('target_type', 'paragraph')->setSetting('handler', 'default')->setTranslatable(false)->setSetting('allow_duplicate', true);
-    
-    $fields['paragraph_revisions'] = BaseFieldDefinition::create('entity_reference_revisions')->setLabel(t(' Sections entities revision '))->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)->setDisplayOptions('form', [
+    $fields['paragraph_revisions'] = BaseFieldDefinition::create('entity_reference_revisions')->setLabel(t(' Sections entities revision '))->setCardinality(
+      FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)->setDisplayOptions('form', [
       'type' => 'paragraphs',
       'weight' => 0
-    ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setSetting('target_type', 'paragraph')->setSetting('handler', 'default')->setTranslatable(false)->setSetting('allow_duplicate', true);
+    ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setSetting('target_type', 'paragraph')->setSetting('handler', 'default')->setTranslatable(false)->setSetting(
+      'allow_duplicate', true);
     
-    $fields['revision_translation_affected'] = BaseFieldDefinition::create('boolean')->setLabel(t('Revision translation affected'))->setDescription(t('Indicates if the last edit of a translation belongs to current revision.'))->setReadOnly(TRUE)->setRevisionable(TRUE)->setTranslatable(TRUE);
+    $fields['revision_translation_affected'] = BaseFieldDefinition::create('boolean')->setLabel(t('Revision translation affected'))->setDescription(
+      t('Indicates if the last edit of a translation belongs to current revision.'))->setReadOnly(TRUE)->setRevisionable(TRUE)->setTranslatable(TRUE);
     
     return $fields;
   }
-  
 }
