@@ -19,8 +19,8 @@ class BlocksContentsListBuilder extends EntityListBuilder {
    */
   public function buildHeader() {
     $header['id'] = $this->t('Blocks contents ID');
-    $header['type'] = 'Type';
     $header['name'] = $this->t('Name');
+    $header['type'] = 'Type';
     return $header + parent::buildHeader();
   }
   
@@ -31,11 +31,10 @@ class BlocksContentsListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity) {
     /* @var \Drupal\blockscontent\Entity\BlocksContents $entity */
     $row['id'] = $entity->id();
-    $row['type'] = $entity->bundle();
-    $row['name'] = Link::createFromRoute($entity->label(), 'entity.blocks_contents.edit_form', [
+    $row['name'] = Link::createFromRoute($entity->label(), 'entity.blocks_contents.canonical', [
       'blocks_contents' => $entity->id()
     ]);
+    $row['type'] = $entity->bundle();
     return $row + parent::buildRow($entity);
   }
-  
 }
