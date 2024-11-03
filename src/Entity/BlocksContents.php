@@ -238,11 +238,10 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
       'weight' => -4
     ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setRequired(TRUE)->setTranslatable(true);
     
-    $fields['status']->setDescription(t('A boolean indicating whether the Blocks contents is published.'))->setDisplayOptions('form',
-      [
-        'type' => 'boolean_checkbox',
-        'weight' => -3
-      ]->setDisplayOptions('view', []));
+    $fields['status']->setDescription(t('A boolean indicating whether the Blocks contents is published.'))->setDisplayOptions('form', [
+      'type' => 'boolean_checkbox',
+      'weight' => -3
+    ])->setDisplayOptions('view', []);
     
     $fields['created'] = BaseFieldDefinition::create('created')->setLabel(t('Created'))->setDescription(t('The time that the entity was created.'))->setDisplayOptions('view', []);
     
