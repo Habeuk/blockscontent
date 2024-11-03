@@ -213,11 +213,7 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
     $fields += static::publishedBaseFieldDefinitions($entity_type);
     
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')->setLabel(t('Authored by'))->setDescription(t('The user ID of author of the Blocks contents entity.'))->setRevisionable(TRUE)->setSetting(
-      'target_type', 'user')->setSetting('handler', 'default')->setTranslatable(TRUE)->setDisplayOptions('view', [
-      'label' => 'hidden',
-      'type' => 'author',
-      'weight' => 0
-    ])->setDisplayOptions('form',
+      'target_type', 'user')->setSetting('handler', 'default')->setTranslatable(TRUE)->setDisplayOptions('view', [])->setDisplayOptions('form',
       [
         'type' => 'entity_reference_autocomplete',
         'weight' => 5,
@@ -234,22 +230,23 @@ class BlocksContents extends EditorialContentEntityBase implements BlocksContent
         'max_length' => 250,
         'text_processing' => 0
       ])->setDefaultValue('')->setDisplayOptions('view', [
-      'label' => 'above',
+      'label' => 'hidden',
       'type' => 'string',
-      'weight' => -4
+      'weight' => -5
     ])->setDisplayOptions('form', [
       'type' => 'string_textfield',
       'weight' => -4
     ])->setDisplayConfigurable('form', TRUE)->setDisplayConfigurable('view', TRUE)->setRequired(TRUE)->setTranslatable(true);
     
-    $fields['status']->setDescription(t('A boolean indicating whether the Blocks contents is published.'))->setDisplayOptions('form', [
-      'type' => 'boolean_checkbox',
-      'weight' => -3
-    ]);
+    $fields['status']->setDescription(t('A boolean indicating whether the Blocks contents is published.'))->setDisplayOptions('form',
+      [
+        'type' => 'boolean_checkbox',
+        'weight' => -3
+      ]->setDisplayOptions('view', []));
     
-    $fields['created'] = BaseFieldDefinition::create('created')->setLabel(t('Created'))->setDescription(t('The time that the entity was created.'));
+    $fields['created'] = BaseFieldDefinition::create('created')->setLabel(t('Created'))->setDescription(t('The time that the entity was created.'))->setDisplayOptions('view', []);
     
-    $fields['changed'] = BaseFieldDefinition::create('changed')->setLabel(t('Changed'))->setDescription(t('The time that the entity was last edited.'));
+    $fields['changed'] = BaseFieldDefinition::create('changed')->setLabel(t('Changed'))->setDescription(t('The time that the entity was last edited.'))->setDisplayOptions('view', []);
     
     $fields['paragraph_revisions'] = BaseFieldDefinition::create('entity_reference_revisions')->setLabel(t(' Sections entities revision '))->setCardinality(
       FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)->setDisplayOptions('form', [
