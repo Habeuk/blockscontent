@@ -19,10 +19,7 @@ class BlocksContentsTypeForm extends EntityForm {
     $form = parent::form($form, $form_state);
     
     $blocks_contents_type = $this->entity;
-    // dump($blocks_contents_type->toArray());
-    // $entity =
-    // \Drupal::entityTypeManager()->getStorage('blocks_contents_type')->load("bloc_test_de_mise_a_jour");
-    // dump($entity->toArray());
+    
     $form['label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Label'),
@@ -93,5 +90,4 @@ class BlocksContentsTypeForm extends EntityForm {
     }
     $form_state->setRedirectUrl($blocks_contents_type->toUrl('collection'));
   }
-  
 }
